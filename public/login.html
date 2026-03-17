@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Login / Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-container {
+            max-width: 450px;
+            margin: 4rem auto;
+            text-align: center;
+        }
+        .form-group {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: inherit;
+        }
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--panel-border);
+        }
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .auth-tab.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+        #auth-btn { width: 100%; padding: 1rem; }
+        .error-msg { color: var(--danger); font-size: 0.9rem; margin-top: 1rem; display: none; }
+    </style>
+</head>
+<body>
+    <div class="glass-bg"></div>
+    <div class="container auth-container">
+        <header>
+            <div class="logo-area">
+                <div class="logo-icon">▲</div>
+                <h1>Welcome Back</h1>
+            </div>
+            <p>Agentic Applicant Tracking System</p>
+        </header>
+
+        <section class="glass-panel" style="padding: 2rem;">
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-mode="login">Login</div>
+                <div class="auth-tab" data-mode="signup">Sign Up</div>
+            </div>
+
+            <form id="auth-form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <!-- Only visible on signup -->
+                <div class="form-group hidden" id="signup-fields">
+                    <label>Role</label>
+                    <select id="role">
+                        <option value="candidate">I am a Candidate</option>
+                        <option value="hr">I am an HR Recruiter</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                
+                <button type="submit" id="auth-btn">
+                    <span class="btn-text">Login</span>
+                    <span class="loader hidden" id="auth-loader"></span>
+                </button>
+                <div class="error-msg" id="error-msg"></div>
+            </form>
+        </section>
+    </div>
+    <script src="auth_script.js?v=2"></script>
+</body>
+</html>

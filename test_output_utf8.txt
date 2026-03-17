@@ -1,0 +1,22 @@
+﻿Testing API with Job Description:
+Looking for a Senior Software Engineer with strong background in Python, Django, and AWS. Must have at least 5 years of experience.
+--------------------------------------------------
+Parsed JD: {
+  role: 'Software Engineer',
+  skills: [ 'python', 'go', 'aws' ],
+  experience: 5
+}
+--------------------------------------------------
+Top 3 Matches:
+#1 Bob Jones - Score: 100%
+Skills: python, go, sql, aws, django
+Reason: Based on fallback logic: Candidate has 3 matching skills and 7 years experience. Strong match.
+--------------------------------------------------
+#2 Eve Wilson - Score: 80%
+Skills: python, go, kubernetes
+Reason: Based on fallback logic: Candidate has 2 matching skills and 6 years experience. Moderate match.
+--------------------------------------------------
+#3 Grace Lee - Score: 60%
+Skills: node, go, mongodb, angular
+Reason: Based on fallback logic: Candidate has 1 matching skills and 8 years experience. Moderate match.
+--------------------------------------------------

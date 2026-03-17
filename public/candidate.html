@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Dashboard - ATS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--panel-border);
+        }
+        .upload-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            border: 2px dashed rgba(88, 166, 255, 0.4);
+            border-radius: 12px;
+            background: rgba(88, 166, 255, 0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+        .upload-section:hover, .upload-section.dragover {
+            background: rgba(88, 166, 255, 0.15);
+            border-color: var(--primary);
+        }
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        #file-input { display: none; }
+        .success-msg { color: var(--success); font-weight: 600; margin-top: 1rem; display: none; }
+        .error-msg { color: var(--danger); font-weight: 600; margin-top: 1rem; display: none; }
+        .logout-btn { background: rgba(255, 255, 255, 0.1); padding: 0.5rem 1rem; }
+    </style>
+</head>
+<body>
+    <div class="glass-bg"></div>
+    <div class="container">
+        <header class="nav-header">
+            <div class="logo-area" style="margin: 0;">
+                <div class="logo-icon" style="font-size: 1.5rem;">▲</div>
+                <h1 style="font-size: 1.5rem;">Candidate Portal</h1>
+            </div>
+            <div>
+                <span style="margin-right: 1rem;" id="welcome-text">Loading...</span>
+                <button class="logout-btn" id="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="glass-panel" style="padding: 2rem;">
+                <h2>My Profile</h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Upload your resume to be evaluated by our AI Agents for open roles.</p>
+                
+                <div class="upload-section" id="drop-zone">
+                    <div class="upload-icon">📄</div>
+                    <h3>Drag & Drop your Resume (PDF)</h3>
+                    <p>or click to browse your files</p>
+                    <input type="file" id="file-input" accept="application/pdf">
+                </div>
+                
+                <div style="text-align: right;">
+                    <button id="upload-btn" disabled>
+                        <span class="btn-text">Upload & Analyze</span>
+                        <span class="loader hidden" id="upload-loader"></span>
+                    </button>
+                </div>
+                
+                <div class="success-msg" id="success-msg">✅ Resume processed successfully! You are now discoverable by HR.</div>
+                <div class="error-msg" id="error-msg"></div>
+
+                <div id="profile-status" style="margin-top: 3rem; display: none;">
+                    <h3>Your Active Profile</h3>
+                    <div style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                        <p><strong>Status:</strong> <span style="color: var(--success)">Active</span></p>
+                        <p><strong>Years Experience Detected:</strong> <span id="exp-stat">0</span></p>
+                        <p><strong>Skills Detected:</strong></p>
+                        <div class="skills-tags" id="skills-list" style="margin-top: 0.5rem;"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="candidate.js"></script>
+</body>
+</html>
